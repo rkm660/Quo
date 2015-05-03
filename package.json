@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/rkm660/Quo/issues"
   },
-  "homepage": "https://github.com/rkm660/Quo"
+  "homepage": "https://github.com/rkm660/Quo",
+  "dependencies": {
+    "express": "^4.12.3"
+  }
 }
