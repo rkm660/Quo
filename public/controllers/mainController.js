@@ -51,11 +51,11 @@ quoApp.controller('mainController', ['$scope', '$http', function($scope, $http) 
     $scope.updateQuote = function(){
     	console.log("in update");
     	$scope.editing = true;	
-
+        if ($scope.quote.length != 0){
     	$http.put('/quotes/' + $scope.quote._id, $scope.quote).success(function(response){
     			refresh();
     	});
-
+}
     }
 
 }]);
