@@ -2,6 +2,7 @@ var quoApp = angular.module('quoApp', []);
 quoApp.controller('mainController', ['$scope', '$http', function($scope, $http) {
     console.log("Hello World from controller");
     $scope.editing = true;	
+    $scope.quote = "";
 
     var refresh = function(){
 
@@ -21,10 +22,12 @@ quoApp.controller('mainController', ['$scope', '$http', function($scope, $http) 
     	$scope.editing = true;	
 
 		console.log("in addQuote");
+        if ($scope.quote.length != 0){
     	$http.post('/quotes',$scope.quote).success(function(response){
-    			console.log(response['quote']);
+    			//console.log(response['quote']);
     			refresh();
     	});
+}
 
 
     };
