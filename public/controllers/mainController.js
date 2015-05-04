@@ -1,7 +1,8 @@
 var quoApp = angular.module('quoApp', []);
 quoApp.controller('mainController', ['$scope', '$http', function($scope, $http) {
     console.log("Hello World from controller");
-   
+    $scope.editing = true;	
+
     var refresh = function(){
 
 	$http.get('/quotes').success(function(response){
@@ -17,6 +18,8 @@ quoApp.controller('mainController', ['$scope', '$http', function($scope, $http) 
 
     $scope.addQuote = function(){
 //    	console.log($scope.quote);
+    	$scope.editing = true;	
+
 		console.log("in addQuote");
     	$http.post('/quotes',$scope.quote).success(function(response){
     			console.log(response['quote']);
@@ -27,6 +30,7 @@ quoApp.controller('mainController', ['$scope', '$http', function($scope, $http) 
     };
     $scope.removeQuote = function(id){
     	console.log(id);
+    	$scope.editing = true;	
     	$http.delete('/quotes/'+id).success(function(response){
 
     			refresh();
@@ -37,11 +41,14 @@ quoApp.controller('mainController', ['$scope', '$http', function($scope, $http) 
     		console.log("got in edit");
     		$http.get('/quotes/'+ id).success(function(response){
     			$scope.quote = response;
+    			$scope.editing = false;	
     		});
     };
 
     $scope.updateQuote = function(){
     	console.log("in update");
+    	$scope.editing = true;	
+
     	$http.put('/quotes/' + $scope.quote._id, $scope.quote).success(function(response){
     			refresh();
     	});
