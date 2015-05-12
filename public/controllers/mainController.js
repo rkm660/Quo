@@ -3,6 +3,7 @@ quoApp.controller('mainController', ['$scope', '$http', function($scope, $http) 
     console.log("Hello World from controller");
     $scope.editing = true;	
     $scope.quote = "";
+    $scope.query = "";
 
     var refresh = function(){
 
@@ -13,7 +14,10 @@ quoApp.controller('mainController', ['$scope', '$http', function($scope, $http) 
     	$scope.quote = "";
     });
 
-    }
+
+
+
+}
     
     refresh();
 
@@ -39,6 +43,11 @@ quoApp.controller('mainController', ['$scope', '$http', function($scope, $http) 
     			refresh();
     	});
     };
+    $scope.getImages = function(){
+        $http.get('/quotes/'+ $scope.query).success(function(response){
+            $scope.imagesArray = response;
+        });
+    }
 
     $scope.editQuote = function(id){
     		console.log("got in edit");

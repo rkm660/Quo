@@ -32,6 +32,8 @@
 				<td><input class="form-control" ng-model="quote.quote"></td>
 				<td><button id="submitButton" class="btn-btn-primary" ng-click="addQuote()" ng-show="editing"><h6>Submit Quote</h6></td>
 				<td><button class="btn-btn-info" ng-click="updateQuote()" ><h6>Update Quote</h6></td>
+				<td><input class="form-control" ng-model="query"></td>
+				<td><button class="btn-btn-info" ng-click="getImages()" ><h6>Get Images</h6></td>
 
 
 			</tr>
@@ -41,8 +43,13 @@
 				<td><button class="btn-btn-warning" ng-click="editQuote(quote._id)"><h6>Edit Quote</h6></td>
 
 			</tr>
+			
 		</tbody>
 	</table>
+	<div ng-repeat="image in imagesArray">
+				<img align="center" ng-src="{{image}}"/></td>
+				
+			</div>
 </div>
 </body>
 </html>
